@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+		<link rel="stylesheet" href="/style.css">
+		<title>Formulaire Modifier les Utilisateurs</title>
+	</head>
+	<body>
+		<header>
+			<h1>Formulaire {{action}}</h1>
+		</header>
+		<main>
+			<form method="post" {% if action == "update" %} action="/updateUser/{{user._id}}"{% endif %} {% if action == "inscription" %} action="/addUser" {% endif %} {% if action == "connexion" %} action="/login" {% endif %}
+			>
+				{% if action == "inscription" or action == "update"  %}
+					<div class="mb-3 offset-4 col-4 ">
+						<label for="name" class="form-label">Name</label>
+						<input type="name" class="form-control" id="name" name="name" aria-describedby="name" value="{{user.name}}">
+					</div>
+					<div class="mb-3 offset-4 col-4 ">
+						<label for="firstname" class="form-label">Firstname</label>
+						<input type="firstname" class="form-control" name="firstname" id="firstname" value="{{user.firstname}}" aria-describedby="firstname">
+					</div>
+				{% endif  %}
+				<div class="mb-3 offset-4 col-4 ">
+					<label for="mail" class="form-label">Email address</label>
+					<input type="email" class="form-control" name="mail" id="mail" value="{{user.mail}}" aria-describedby="emailHelp">
+				</div>
+				<div class="mb-3 offset-4 col-4 ">
+					<label for="password" class="form-label">Password</label>
+					<input type="password" class="form-control" name="password" id="password">
+				</div>
+				<div>
+					<input type="submit" class="lien btn btn-dark" {% if action == "connexion" %} value="Connexion"{% endif %} {% if action == "inscription" %} value="s'inscrire"{% endif %}{% if action == "update" %} value="Modifier"{% endif %}>
+					<a href="/users" class="lien btn btn-dark">Liste</a>
+				</div>
+			</form>
+		</main>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	</body>
+</html>

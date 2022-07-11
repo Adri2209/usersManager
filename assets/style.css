@@ -1,0 +1,14 @@
+body{
+    background-color: red;
+}
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+.mb-3{
+    text-align: center;
+}
+div{
+    text-align: center;
+    margin-top: 20px;
+}
